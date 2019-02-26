@@ -10,8 +10,9 @@ function submitForm(){
 	}
 	var TableNo1 = document.mealForm.TableNo.value;
 	if (document.mealForm.TableNo.value === null||document.mealForm.TableNo.value === ""){
-		TableNo1 = 0;
+		TableNo1 = "0";
 	}
+
 	var data = JSON.stringify({
 		FirstName: document.mealForm.FirstName.value,
 		LastName: document.mealForm.LastName.value,
@@ -21,7 +22,9 @@ function submitForm(){
 		UserDate: document.getElementById('selected').innerHTML,
 		MealChoice: document.mealForm.MealChoice.value,
 		NoSeats: document.mealForm.NoSeats.value,
-		TableNo: TableNo1
+		TableNo: TableNo1,
+		StaffCode: document.mealForm.StaffCode.value
+//		Paid: Paid1
 	});
 	//document.getElementById('test').innerHTML=FirstName;
 	var xhr = new XMLHttpRequest();
@@ -34,6 +37,7 @@ function submitForm(){
 	xhr.open("POST","mail.php");
 	xhr.setRequestHeader("Content-type","application/json");
 	xhr.send(data);
+	console.log('sending...')
 	return false;
 }
 //select highSeason from shabbat where date = document.mealForm.UserDate.value

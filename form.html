@@ -10,17 +10,17 @@
 <!--<script src="tableVisual.js"></script>-->
 
 <form name="mealForm" onSubmit="return submitForm()" method= "post">
-
+<!--onChange="return tableVisual()"-->
 	<h1>Book Your Shabbat Meals</h1>
 
 	<div><p>First Name:<br>
-	<input id="FirstName" class="FormElements" type= "text" name= "FirstName" ></p></div>
+	<input id="FirstName" class="FormElements" type= "text" name= "FirstName" required ></p></div>
 
 	<div><p>Last Name:<br>
-	<input id="LastName" class="FormElements" type= "text" name= "LastName" ><p></div>
+	<input id="LastName" class="FormElements" type= "text" name= "LastName" required><p></div>
 
 	<div><p>Contact Number:<br>
-	<input id="TelNo" class="FormElements" type= "tel" name= "TelNo"><p></div>
+	<input id="TelNo" class="FormElements" type= "tel" name= "TelNo" required><p></div>
 
 	<div><p>Email Address:<br>
 	<input id="EmailAdd" class="FormElements" type= "email" name= "EmailAdd" ><p></div>
@@ -29,11 +29,11 @@
 	<input id="HomeAdd" class="FormElements" type= "text" name= "HomeAdd"><p></div>
 	<br>
 
-	<div><p>Shabbat Date:<br>
-	<input id="UserDate" class="FormElements" type= "text" name= "UserDate" ><p></div>
+	<div class="hide"><p>Shabbat Date:<br>
+	<input id="UserDate" class="FormElements" type= "text" name= "UserDate" onchange="myvisibleToggle()" required><p></div>
 
 	<div><p>Meals:<br>
-	<select id="MealChoice" class="FormElements" name= "MealChoice">
+	<select id="MealChoice" class="FormElements" name= "MealChoice" required>
   		<option value="" disabled selected>Select your Option</option>
   		<option value="Both Meals">Friday Dinner and Saturday Lunch (US$150)</option>
  		<option value="Dinner Only">Friday Dinner Only (US$75)</option>
@@ -43,20 +43,61 @@
 	<div><p>Number of Seats:<br>
 	<input id="NoSeats" class="FormElements" type= "number" name= "NoSeats"><p></div>
 
-	<div id="tableSeat"><p>Table Choice:<br>
-	<input id="TableNo" class="FormElements" type= "number" name= "TableNo"><p></div>
-	<!-- connect tabe number choice range to the amount of tables available and check if
+	<div id="TableSeat"><p>Table Choice:<br>
+	<input id="TableNo" class="FormElements" class="hidden" type= "number" name= "TableNo"><p></div>
+	<!-- connect table number choice range to the amount of tables available and check if
 	there are enough seats available in the chosen table for the amount of people reserving.
 	Perhaps have a countdown on every table with the amount of seats left-->
 	<br>
+	<div><p>Verification Code (for staff use only):<br>
+	<input id="StaffCode" class="FormElements" type= "text" name= "StaffCode"><p></div>
+	<br>
+
 	<input class="buttons" type= "reset">
 	<input class="buttons" type= "submit">
 
 </form>
+
+<script>
+//document.getElementByClassName('hide').style.visibility = "hidden";
+document.getElementById('TableNo').style.visibility = "hidden";
+function myvisibleToggle() {
+  var x = document.getElementById('TableNo');
+//  var x = document.getElementByClassName('hidden');
+  //var y = document.getElementById('selected').innerHTML;
+		var y = document.UserDate.value;
+  if (y === "2019-03-01"||y === "2019-03-02"||
+      y === "2019-03-08"||y === "2019-03-09"||
+      y === "2019-03-015"||y === "2019-03-016"||
+        y === "2019-03-22"||y === "2019-03-23"||
+          y === "2019-03-29"||y === "2019-03-30") {
+    x.style.visibility = "visible";
+  } /*else {
+    x.style.visibility = "hidden";
+  }*/
+}
+</script>
+
+<!-- Paypal Form-->
+	<form name="PaypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="FTZ3D65XRNM9Y">
+	<table>
+	<tr><td><input type="hidden" name="on0" value="Meal Choice">Meal Choice</td></tr><tr><td><select name="os0">
+		<option value="Friday Dinner & Saturday Lunch">Friday Dinner & Saturday Lunch $150.00 USD</option>
+		<option value="Friday Dinner">Friday Dinner $75.00 USD</option>
+		<option value="Saturday Lunch">Saturday Lunch $75.00 USD</option>
+	</select> </td></tr>
+	</table>
+	<input type="hidden" name="currency_code" value="USD">
+	<input type="image" src="https://www.paypalobjects.com/en_GB/HK/i/btn/btn_buynowCC_LG_wCUP.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+	</form>
+
 <h2 id="message"></h2>
 
 <!--<div id="tableVisual"></div>-->
-<img src="floorPlan.jpg" id="tableVisual" alt="floorPlan">
+<img src="TableLayout" id="tableVisual" class="hide" alt="floorPlan">
 <!--<map name="floorMap">
   <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
   <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
@@ -79,8 +120,8 @@ var picker = new Pikaday(
 						document.getElementById('selected').innerHTML=date.textContent;
     }
 });
-<!--please work-->
 </script>
+
 </main>
 </body>
 </html>

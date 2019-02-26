@@ -56,9 +56,13 @@ input[type=number]:focus {
   float: left;
 	}
 
-#tableSeat {
+/*#TableNo {
 	visibility: hidden;
 }
+#TableSeat {
+  visibility: hidden;
+}*/
+/*.hidden { display: none; }*/
 
 #HomeAdd {
 	width: 215%;

@@ -1,5 +1,5 @@
 <?php
-define ("HOST", "127.0.0.1");
+define ("HOST", "localhost");
 // The host to connect to
 define ("DATABASE", "BookingIA");
 // Name of the database

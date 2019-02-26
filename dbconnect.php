@@ -1,6 +1,6 @@
 <?php
 include_once 'dbconfig.php';
-$connection = new mysqli(HOST, USER, PASSWORD, DATABASE);
+$connection = new mysqli('p:localhost', 'root', 'aaron' , 'BookingIA');
 // Create connection
 //Check for connection
 if ($connection->connect_error){
