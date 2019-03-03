@@ -19,12 +19,12 @@ function submitForm(){
 		TelNo: TelNo1,
 		EmailAdd: document.mealForm.EmailAdd.value,
 		HomeAdd: HomeAdd1,
-		UserDate: document.getElementById('selected').innerHTML,
+	//	UserDate: document.getElementById('selected').innerHTML,
+		UserDate: document.mealForm.UserDate.value,
 		MealChoice: document.mealForm.MealChoice.value,
 		NoSeats: document.mealForm.NoSeats.value,
 		TableNo: TableNo1,
 		StaffCode: document.mealForm.StaffCode.value
-//		Paid: Paid1
 	});
 	//document.getElementById('test').innerHTML=FirstName;
 	var xhr = new XMLHttpRequest();
