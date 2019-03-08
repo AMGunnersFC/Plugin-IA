@@ -3,7 +3,7 @@ include_once 'dbconnect.php';
 header ("Content-Type: application/json");
 $input=file_get_contents('php://input');
 $data=json_decode($input);
-//Identidying Variables
+//Identifying Variables
 $FirstName2=$data->FirstName;
 $LastName2=$data->LastName;
 $TelNo2=$data->TelNo;
@@ -37,9 +37,9 @@ $to= 'aaron.meoded@student.carmel.edu.hk,' .$EmailAdd2;
 if ($StaffCode2 === "booking123"){
   mail ($to, $subject, $body, $header);
 }
+
 // Injects Form data into SQL database
 if ($StaffCode2 === "booking123"){
-//if ($EmailAdd2 != NULL || $EmailAdd2 != ""){
   $stmt=$connection->prepare("INSERT INTO MealForm (FirstName, LastName, EmailAdd, HomeAdd, MealChoice, NoSeats, TableNo, UserDate, TelNo, StaffCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   // Prepare statement prevents SQL Injection;
   $stmt->bind_param('sssssiisss', $FirstName2, $LastName2, $EmailAdd2, $HomeAdd2, $MealChoice2, $NoSeats2, $TableNo2, $UserDate2, $TelNo2, $StaffCode2);
@@ -49,19 +49,6 @@ if ($StaffCode2 === "booking123"){
   //echo 'add sql data';
   $stmt->execute();
 }
-  /*$sql = "INSERT INTO MealForm (FirstName, LastName, TelNo, EmailAdd, HomeAdd, UserDate, MealChoice, NoSeats, TableNo)
-  VALUES ('$FirstName2', '$LastName2', '$TelNo2', '$EmailAdd2', '$HomeAdd2', '$UserDate2', '$MealChoice2', $NoSeats2, $TableNo2)";
-
-  if ($connection->query($sql) === TRUE) {
-      echo "New record created successfully";
-  } else {
-      echo "Error: " . $sql . "<br>" . $connection->error;
-  }
-
-  $connection->close();
-}
-*/
-
 
 echo "Thank You for your Time";
 ?>

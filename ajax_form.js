@@ -19,14 +19,13 @@ function submitForm(){
 		TelNo: TelNo1,
 		EmailAdd: document.mealForm.EmailAdd.value,
 		HomeAdd: HomeAdd1,
-	//	UserDate: document.getElementById('selected').innerHTML,
 		UserDate: document.mealForm.UserDate.value,
 		MealChoice: document.mealForm.MealChoice.value,
 		NoSeats: document.mealForm.NoSeats.value,
 		TableNo: TableNo1,
 		StaffCode: document.mealForm.StaffCode.value
 	});
-	//document.getElementById('test').innerHTML=FirstName;
+
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(xhr.status === 200 && xhr.readyState === 4){
@@ -40,4 +39,3 @@ function submitForm(){
 	console.log('sending...')
 	return false;
 }
-//select highSeason from shabbat where date = document.mealForm.UserDate.value

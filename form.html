@@ -20,10 +20,10 @@
 	<input id="LastName" class="FormElements" type= "text" name= "LastName" required></p></div>
 
 	<div><p>Contact Number:<br>
-	<input id="TelNo" class="FormElements" type= "tel" name= "TelNo" required></p></div>
+	<input id="TelNo" class="FormElements" type= "tel" name= "TelNo"></p></div>
 
 	<div><p>Email Address:<br>
-	<input id="EmailAdd" class="FormElements" type= "email" name= "EmailAdd" ></p></div>
+	<input id="EmailAdd" class="FormElements" type= "email" name= "EmailAdd" required></p></div>
 
 	<div><p>Home Address:<br>
 	<input id="HomeAdd" class="FormElements" type= "text" name= "HomeAdd"></p></div>
@@ -70,24 +70,15 @@
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-
 <h2 id="message"></h2>
-
-<!--<div id="tableVisual"></div>-->
-
-<!--<map name="floorMap">
-  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
-  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
-  <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
-</map>-->
-<!--<script src="moment.min.js"></script>-->
+<p id="selected"></p>
 
 <script>
-// Hiding Table Number Preferences Depending on the Date
 document.getElementById('TableNo').style.visibility = "hidden";
 document.getElementById('tableVisual').style.display= "none";
 document.getElementById('TableSeat').style.visibility = "hidden";
 
+// Hiding Table Number Preferences Depending on the Date
 function myvisibleToggle() {
   var x = document.getElementById('TableNo');
   var y = document.getElementById('UserDate').value;
@@ -103,11 +94,9 @@ function myvisibleToggle() {
     x.style.visibility = "hidden";
 		document.getElementById('tableVisual').style.display = "none";
 		document.getElementById('TableSeat').style.visibility = "hidden";
-  }
+	}
 }
 </script>
-
-<p id="selected"></p>
 
 <script src="moment.min.js"></script>
 <script src="Pikaday-master/pikaday.js"></script>
